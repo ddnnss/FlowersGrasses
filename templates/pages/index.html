@@ -1,0 +1,170 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+
+    	<div class="tiva-slideshow-wrapper">
+				<div id="tiva-slideshow" class="nivoSlider">
+					<a href="#" title="Slideshow image"><img class="img-responsive" src="{% static 'img/slide1.jpg' %}" title="#caption1" alt="Slideshow image"></a>
+
+				</div>
+
+				<div id="caption1" class="nivo-html-caption">
+					<div class="tiva-caption">
+						<div class="left-right hidden-xs medium_yellow_16"><span>Lorem ipsum</span></div>
+						<div class="left-right hidden-xs normal very_large_60">Lorem ipsum</div>
+						<div class="left-right  hidden-md hidden-sm hidden-xs slow medium_16">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, quo.</div>
+						<div class="left-right hidden-xs slow"><a class="btn button btn-now" href="#" title="Shop now">Lorem ipsum.</a></div>
+					</div>
+				</div>
+
+			</div><!-- end tiva-slideshow-wrapper -->
+
+            <div class="section section-bestsellers">
+					<div class="container">
+                        <h4 class="title_block">Каталог</h4>
+						<div class="row">
+                            {% for category in all_category %}
+
+							<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+								<div class="banner-item effect">
+
+
+									<a class="image-wrap" href="{% url 'cat' category.name_slug %}" title=""><img class="img-responsive" src="{{ category.image.url }}" alt=""></a>
+                                    <div>{{ category.name }} </div>
+								</div>
+							</div>
+                            {% endfor %}
+						</div><!-- end row -->
+					</div><!-- end container -->
+				</div>
+            <div class="section section-servies">
+					<div class="services-items">
+						<div class="row no-gutters">
+							<div style=" text-align: center; background: #f5f5f5;"
+                                 class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-sp-12">
+								<div class="services-item services-item1">
+									<div class="media">
+										<div class="icon-box">
+											<i class="zmdi zmdi-truck"></i>
+										</div>
+										<div class="media-body">
+											<h4><a title="Free shipping" href="#">Lorem ipsum dolor.</a></h4>
+											<p>Lorem ipsum dolor.</p>
+										</div>
+									</div>
+								</div><!--end services-item-->
+							</div>
+							<div style=" text-align: center; background: #b5b5b5;"
+                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-sp-12">
+								<div class="services-item services-item2">
+									<div class="media">
+										<div class="icon-box">
+											<i class="zmdi zmdi-mail-reply-all"></i>
+										</div>
+										<div class="media-body">
+											<h4><a title="Exchanges &amp; returns" href="#">Lorem ipsum dolor.</a></h4>
+											<p>Lorem ipsum dolor.</p>
+										</div>
+									</div>
+								</div><!--end services-item-->
+							</div>
+							<div style=" text-align: center; background: #f5f5f5;"
+                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-sp-12">
+								<div class="services-item services-item3">
+									<div class="media">
+										<div class="icon-box">
+											<i class="zmdi zmdi-comments"></i>
+										</div>
+										<div class="media-body">
+											<h4><a title="Online support" href="#">Lorem ipsum dolor.</a></h4>
+											<p>Lorem ipsum dolor.</p>
+										</div>
+									</div>
+								</div><!--end services-item-->
+							</div>
+						</div>
+					</div><!-- end services-items -->
+				</div>
+			<div id="columns" class="columns-container">
+				<div class="section section-banner">
+					<div class="container">
+						<div class="tv-table block">
+							<div class="tv-tablecell">
+								<div class="block-html block">
+									<h4>Lorem ipsume</h4>
+									<h3>Lorem ipsum</h3>
+									<p class="block-htmldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+									<a class="button btn btn-primary" href="page-category-left.html" title="Shop now">Lorem ipsum</a>
+								</div><!--end block-html -->
+							</div>
+							<div class="tv-tablecell box-image">
+								<div class="banner-item effectbanner">
+									<a class="image-wrap" href="#"><img class="img-responsive" src="{% static 'img/banner1-h1.jpg' %}" alt=""></a>
+								</div><!--end banner-item-->
+							</div>
+						</div>
+						<div class="tv-table block">
+							<div class="tv-tablecell box-image">
+								<div class="banner-item effectbanner">
+									<a class="image-wrap" href="#"><img class="img-responsive" src="{% static 'img/banner2-h1.jpg' %}" alt=""></a>
+								</div><!--end banner-item-->
+							</div>
+							<div class="tv-tablecell">
+								<div class="block-html block">
+									<h4>Lorem ipsum</h4>
+									<h3>Lorem ipsum</h3>
+									<p class="block-htmldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+									<a class="button btn btn-primary" href="page-category-left.html" title="Shop now">Lorem ipsum</a>
+								</div><!--end block-html -->
+							</div>
+						</div>
+                        	<div class="tv-table block">
+							<div class="tv-tablecell">
+								<div class="block-html block">
+									<h4>Lorem ipsume</h4>
+									<h3>Lorem ipsum</h3>
+									<p class="block-htmldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+									<a class="button btn btn-primary" href="page-category-left.html" title="Shop now">Lorem ipsum</a>
+								</div><!--end block-html -->
+							</div>
+							<div class="tv-tablecell box-image">
+								<div class="banner-item effectbanner">
+									<a class="image-wrap" href="#"><img class="img-responsive" src="{% static 'img/banner1-h1.jpg' %}" alt=""></a>
+								</div><!--end banner-item-->
+							</div>
+						</div>
+					</div><!-- end container -->
+				</div><!-- end section-banner -->
+
+
+
+				<div class="section section-newsletter">
+					<div class="container">
+						<!-- start newsletter -->
+						<div class="block-newsletter" id="block-newsletter">
+							<h4 class="title_block">Lorem ipsum dolor sit.</h4>
+							<p class="descript">Lorem ipsum dolor sit amet, consectetur.</p>
+							<form action="#" method="post" class="form-inline">
+								<div class="form-group">
+									<input class="inputNew form-control grey newsletter-input" id="newsletter-input" type="text" name="email" size="18" placeholder="lorem ipsum...">
+									<button type="submit" name="submitNewsletter" class="btn-primary btn button button-small">
+										<span class="submit-icon"></span>
+										<span class="submit-text">lorem ipsum</span>
+									</button>
+								</div>
+							</form>
+						</div><!-- end block-newsletter -->
+					</div>
+				</div><!-- end section section-newsletter -->
+
+
+			</div><!--end columns -->
+
+
+{% endblock %}
+
+{% block js %}
+     <script src="{% static 'js/jquery.nivo.slider.js' %}"></script>
+{% endblock %}

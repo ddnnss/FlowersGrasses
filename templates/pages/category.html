@@ -1,0 +1,93 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+<div id="breadcrumb" class="clearfix">
+				<div class="container">
+					<div class="breadcrumb clearfix">
+						<ul class="ul-breadcrumb">
+							<li><a href="index.html" title="Home">Главная</a></li>
+                            <li><a href="index.html" title="Home">Каталог</a></li>
+							<li><span>{{ category.name }}</span></li>
+						</ul>
+
+					</div>
+				</div>
+			</div><!-- end breadcrumb -->
+    <div class="section section-tabsproduct">
+					<div class="container">
+                            <div class="block-title">
+								<h4 class="title_block">{{ category.name }}</h4>
+								<ul class="filter-items">
+                                    {% for filter in filters %}
+                                         <li><a href="#">{{ filter.name }}</a></li>
+                                    {% endfor %}
+{#                                    <li><a class="filter-active" href="#">фильтр 1</a></li>#}
+
+                                </ul>
+
+							</div>
+						<div class="block_content">
+										<div class="row">
+                                            {% for item in all_items %}
+											<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-sp-12">
+												<div class="product-container">
+													<div class="left-block">
+														<div class="product-image-container">
+															<a class="product_img_link" href="{% url 'product' item.name_slug %}" title="{{ item.name }}">
+																<img  alt="Tulipa floriade - red" class="img-responsive" width="480" height="640"
+                                                                           {% for image in item.itemimage_set.all %}
+                                                                                {% if image.is_main %}
+                                                                                   src="{{ image.image_small.url }}"
+                                                                                {% endif %}
+                                                                            {% endfor %} >
+															</a>
+															<span class="label-new label">New</span>
+															<span class="label-sale label">Sale</span>
+															<span class="label-reduction label">-5%</span>
+														</div>
+														<div class="box-buttons">
+																<a class="ajax_add_to_cart_button button btn" href="#" rel="nofollow" title="Add to cart"><i class="zmdi zmdi-shopping-cart"></i></a>
+																<a class="button btn quick-view" href="#" title="Quick view">
+																	<i class="zmdi zmdi-eye"></i>
+																</a>
+																<a class="button btn addToWishlist" href="#" title="Add to my wishlist">
+																	<i class="zmdi zmdi-favorite-outline"></i>
+																</a>
+																<a class="button btn add_to_compare" href="#" title="Quick view">
+																	<i class="zmdi zmdi-refresh-alt"></i>
+																</a>
+														</div>
+													</div><!--end left block -->
+													<div class="right-block">
+														<div class="product-box">
+															<h5 class="name">
+																<a class="product-name" href="page-detail.html" title="Tulipa floriade - red">
+																	Tulipa floriade - red
+																</a>
+															</h5>
+															<div class="content_price">
+																<span class="price product-price">$28.98</span>
+																<span class="old-price product-price">$30.51</span>
+															</div>
+															<div class="product_comments clearfix">
+																<div class="product-rating">
+																	<div class="star_content">
+																		<div class="star star_on"></div>
+																		<div class="star star_on"></div>
+																		<div class="star star_on"></div>
+																		<div class="star star_on"></div>
+																		<div class="star star_on"></div>
+																	</div>
+																</div>
+															</div><!-- end product_comments -->
+														</div><!-- end product-box -->
+													</div><!--end right block -->
+												</div><!-- end product-container-->
+											</div>
+										    {% endfor %}
+										</div><!-- end row -->
+									</div><!-- end block_content -->
+					</div><!-- end container -->
+				</div>
+    
+{% endblock %}
