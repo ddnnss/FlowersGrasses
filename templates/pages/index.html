@@ -88,53 +88,45 @@
 			<div id="columns" class="columns-container">
 				<div class="section section-banner">
 					<div class="container">
-						<div class="tv-table block">
+                        {% for collection in all_collections %}
+                           {% if forloop.counter|divisibleby:2 %}
+                                <div class="tv-table block">
+                                <div class="tv-tablecell box-image">
+                                    <div class="banner-item effectbanner">
+                                        <a class="image-wrap" href="#"><img class="img-responsive" src="{{ collection.image.url }}" alt=""></a>
+                                    </div><!--end banner-item-->
+                                </div>
+                                <div class="tv-tablecell">
+                                    <div class="block-html block">
+                                        <h3>{{ collection.name }}</h3>
+
+                                        <p class="block-htmldes">описание коллекции</p>
+                                        <a class="button btn btn-primary" href="#" title="Shop now">Открыть</a>
+                                    </div><!--end block-html -->
+                                </div>
+                            </div>
+                           {% else %}
+
+                                <div class="tv-table block">
 							<div class="tv-tablecell">
 								<div class="block-html block">
-									<h4>Lorem ipsume</h4>
-									<h3>Lorem ipsum</h3>
-									<p class="block-htmldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-									<a class="button btn btn-primary" href="page-category-left.html" title="Shop now">Lorem ipsum</a>
+									 <h3>{{ collection.name }}</h3>
+
+                                        <p class="block-htmldes">описание коллекции</p>
+                                        <a class="button btn btn-primary" href="#" title="Shop now">Открыть</a>
 								</div><!--end block-html -->
 							</div>
 							<div class="tv-tablecell box-image">
 								<div class="banner-item effectbanner">
-									<a class="image-wrap" href="#"><img class="img-responsive" src="{% static 'img/banner1-h1.jpg' %}" alt=""></a>
+									<a class="image-wrap" href="#"><img class="img-responsive" src="{{ collection.image.url }}" alt=""></a>
 								</div><!--end banner-item-->
 							</div>
 						</div>
-						<div class="tv-table block">
-							<div class="tv-tablecell box-image">
-								<div class="banner-item effectbanner">
-									<a class="image-wrap" href="#"><img class="img-responsive" src="{% static 'img/banner2-h1.jpg' %}" alt=""></a>
-								</div><!--end banner-item-->
-							</div>
-							<div class="tv-tablecell">
-								<div class="block-html block">
-									<h4>Lorem ipsum</h4>
-									<h3>Lorem ipsum</h3>
-									<p class="block-htmldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-									<a class="button btn btn-primary" href="page-category-left.html" title="Shop now">Lorem ipsum</a>
-								</div><!--end block-html -->
-							</div>
-						</div>
-                        	<div class="tv-table block">
-							<div class="tv-tablecell">
-								<div class="block-html block">
-									<h4>Lorem ipsume</h4>
-									<h3>Lorem ipsum</h3>
-									<p class="block-htmldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-									<a class="button btn btn-primary" href="page-category-left.html" title="Shop now">Lorem ipsum</a>
-								</div><!--end block-html -->
-							</div>
-							<div class="tv-tablecell box-image">
-								<div class="banner-item effectbanner">
-									<a class="image-wrap" href="#"><img class="img-responsive" src="{% static 'img/banner1-h1.jpg' %}" alt=""></a>
-								</div><!--end banner-item-->
-							</div>
-						</div>
+                           {% endif %}
+
+
+                        {% endfor %}
+
 					</div><!-- end container -->
 				</div><!-- end section-banner -->
 
