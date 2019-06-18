@@ -101,7 +101,7 @@
                                         <h3>{{ collection.name }}</h3>
 
                                         <p class="block-htmldes">описание коллекции</p>
-                                        <a class="button btn btn-primary" href="#" title="Shop now">Открыть</a>
+                                        <a class="button btn btn-primary" href="{% url 'collection' collection.name_slug %}" title="Shop now">Открыть</a>
                                     </div><!--end block-html -->
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
 									 <h3>{{ collection.name }}</h3>
 
                                         <p class="block-htmldes">описание коллекции</p>
-                                        <a class="button btn btn-primary" href="#" title="Shop now">Открыть</a>
+                                        <a class="button btn btn-primary" href="{% url 'collection' collection.name_slug %}" title="Shop now">Открыть</a>
 								</div><!--end block-html -->
 							</div>
 							<div class="tv-tablecell box-image">
