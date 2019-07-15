@@ -7,3 +7,9 @@ def index(request):
     all_collections = Collection.objects.all()
     return render(request, 'pages/index.html', locals())
 
+def login(request):
+    return render(request, 'pages/login.html', locals())
+
+def registration(request):
+    return render(request, 'pages/registration.html', locals())
+

@@ -108,6 +108,8 @@ INSTALLED_APPS = [
     'imagekit',
     'customuser',
     'items',
+    'order',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -134,6 +136,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'customuser.context_processors.check_profile',
+                'cart.context_processors.items_in_cart'
             ],
         },
     },

@@ -1,4 +1,5 @@
 {% load static %}
+
 		<header id="top-header">
 
 				<div class="header-main">
@@ -18,44 +19,53 @@
 											<div data-toggle="dropdown" class="dropdown-title">
 												<a href="#" title="Shopping cart">
 													<span class="title-cart"><i class="zmdi zmdi-shopping-basket"></i></span>
-													<span class="ajax_cart_quantity">2</span>
+                                                    {% if count_items_in_cart > 0  %}
+													<span class="ajax_cart_quantity">{{ count_items_in_cart }}</span>
+                                                    {% endif %}
 												</a>
 											</div>
 											<div class="dropdown-content">
 												<div class="cart_block_list">
 													<table class="cart">
-														<tbody>
+														<tbody class="cart_table_lg">
+                                                             {% if not count_items_in_cart > 0  %}
+                                                               <tr>
+                                                               <td>
+                                                                   Корзина пуста
+                                                               </td>
+                                                               </tr>
+                                                                 {% else %}
+                                                                	<tr>
+																<td class="product-thumbnail">
+																	<a href="page-detail.html">
+																		<img width="80" height="107" alt="" class="img-responsive" src="img/product/2.jpg">
+																	</a>
+																</td>
+																<td class="product-name">
+																	<a href="page-detail.html">Tulipa floriade - red</a>
+																	<br><span class="amount"><strong>$28.98</strong></span>
+																</td>
+																<td class="product-actions">
+																	<a title="Remove this item" class="remove" href="#">
+																		<i class="fa fa-times"></i>
+																	</a>
+																</td>
+															</tr>
+															<tr>
+																<td class="actions" colspan="3">
+																	<div class="actions-continue">
+																		<button type="submit" class="btn btn-default">View All</button>
+																		<button type="submit" class="btn pull-right btn-primary">Checkout<i class="fa fa-angle-right ml-xs"></i></button>
+																	</div>
+																</td>
+															</tr>
+                                                             {% endif %}
 
-{#															<tr>#}
-{#																<td class="product-thumbnail">#}
-{#																	<a href="page-detail.html">#}
-{#																		<img width="80" height="107" alt="" class="img-responsive" src="img/product/2.jpg">#}
-{#																	</a>#}
-{#																</td>#}
-{#																<td class="product-name">#}
-{#																	<a href="page-detail.html">Tulipa floriade - red</a>#}
-{#																	<br><span class="amount"><strong>$28.98</strong></span>#}
-{#																</td>#}
-{#																<td class="product-actions">#}
-{#																	<a title="Remove this item" class="remove" href="#">#}
-{#																		<i class="fa fa-times"></i>#}
-{#																	</a>#}
-{#																</td>#}
-{#															</tr>#}
-{#															<tr>#}
-{#																<td class="actions" colspan="3">#}
-{#																	<div class="actions-continue">#}
-{#																		<button type="submit" class="btn btn-default">View All</button>#}
-{#																		<button type="submit" class="btn pull-right btn-primary">Checkout<i class="fa fa-angle-right ml-xs"></i></button>#}
-{#																	</div>#}
-{#																</td>#}
-{#															</tr>#}
 														</tbody>
 													</table>
 												</div>
 											</div><!-- end dropdown-content -->
 										</div><!-- end blockcart_top -->
-
 										<div id="search_block_top" class="block-search dropdown-over pull-right">
 											<div data-toggle="dropdown" class="dropdown-title">
 												<a href="#" title="Search"><i class="zmdi zmdi-search"></i></a>
@@ -81,6 +91,12 @@
 												<li class="dropdown"><a href='#'>БЛОГ </a></li>
 												<li class="dropdown"><a href='#'>КОНТАКТЫ </a></li>
 												<li class="dropdown"><a href='#'>О НАС</a></li>
+                                               {% if not request.user.is_authenticated %}
+                                                <li class="dropdown"><a href='{% url 'login' %}'><i style="font-size: 19px" class="fa fa-user "></i></a></li>
+                                                {% else %}
+                                                   <li class="dropdown"><a href='{% url 'logout' %}'><i style="font-size: 19px" class="fa fa-sign-out "></i></a></li>
+                                                {% endif %}
+
                                             </ul>
 										</nav><!-- end main-nav -->
 									</div><!-- end topheader-navholder-rg -->

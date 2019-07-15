@@ -1,0 +1,58 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+<div id="breadcrumb" class="clearfix">
+				<div class="container">
+					<div class="breadcrumb clearfix">
+						<ul class="ul-breadcrumb">
+							<li><a href="/" title="Home">Главная</a></li>
+							<li><span>Вход</span></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+    <div id="columns" class="columns-container">
+				<!-- container -->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<form action="#" id="create-account-form" class="form-horizontal box panel panel-default">
+								<h3 class="panel-heading">Создать аккаунт</h3>
+								<div class="form_content panel-body clearfix">
+									<p>Регистрация быстрая и простая. Это позволит вам иметь возможность делать покупки в нашем магазине. Для того, чтобы начать покупки, нажмите зарегистрироваться.</p>
+									<a href="{% url 'registration' %}" class="btn button btn-default" title="Create an account" rel="nofollow"><i class="fa fa-user left"></i> Зарегистрироваться</a>
+								</div>
+							</form><!--end form -->
+						</div>
+						<div class="col-lg-6">
+							<form action="#" id="form-login" onsubmit="return false;" class="box panel panel-default">
+								<h3 class="panel-heading">Уже зарегистрированны?</h3>
+								<div class="form_content panel-body clearfix">
+                                    <div class="form-group login-username">
+                            <div>
+                                <input name="log" id="login-email"  required="required" class="form-control input" size="20"
+                                       placeholder="Адрес E-MAIL" type="email">
+                            </div>
+                        </div>
+                        <div class="form-group login-password">
+                            <div>
+                                <input name="Password" id="login-password"  required="required" class="form-control input" size="20"
+                                       placeholder="Пароль" type="password">
+                            </div>
+                        </div>
+                        <div   id="errorlogin" style="color: red; margin-bottom: 5px;"></div>
+                        <div>
+                            <div>
+                                <input name="submit" class="btn  btn-block btn-lg btn-primary" value="ОТПРАВИТЬ" type="submit"  onclick="login()">
+                            </div>
+                        </div>
+
+								</div>
+							</form><!--end form -->
+						</div>
+					</div>
+				</div> <!-- end container -->
+			</div>
+
+{% endblock %}>
