@@ -69,12 +69,21 @@
 								</div><!-- end short_description_block -->
 								  <form action="{% url 'add_to_cart' %}"   method="post"
                   onsubmit="add_to_cart(this,{{ item.id }});return false;">{% csrf_token %}
-                <div style="display: inline-flex;" class="row">
+
                     {% if item.is_present %}
-                        <div class="col-lg-offset-1 col-lg-4 col-sm-6">
-                            <input class="form-control" type="number" id="{{ item.id }}_items_number" min="1"  value="1" >
-                        </div>
-                        <div class=" col-lg-2 col-sm-6">
+
+
+     <a style="display: inline-block" href="#" onclick="upClick(this)" class="btn status-enable btn-sm product_quantity_down">
+												<i class="fa fa-caret-up"></i>
+											</a>
+                            <input class="form-control cart-input" type="number" id="{{ item.id }}_items_number" min="1"  value="1" >
+                        <a style="display: inline-block" href="#" onclick="downClick(this)" class="btn status-enable btn-sm product_quantity_down">
+												<i class="fa fa-caret-down"></i>
+											</a>
+
+
+
+
                             <button type="submit" class="btn btn-primary" id="{{ item.id }}_submit"
                                     data-item_id="{{ item.id }}"
                                     data-item_name="{{ item.name }}"
@@ -82,11 +91,11 @@
                                     data-item_image="{{ item.itemimage_set.first.image_small }}">
                                 <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> В КОРЗИНУ </span>
                             </button>
-                        </div>
+
                     {% else %}
                         <strong>НЕТ В НАЛИЧИИ</strong>
                     {% endif %}
-                </div>
+
             </form>
 
 							</div><!-- end pb-centercolumn -->
@@ -343,7 +352,144 @@
 				</div> <!-- end container -->
 			</div><!--end warp-->
 
+<script>
 
+function upClick(b){
+     var $button = $(b);
+   var oldValue = $('.cart-input').val();
+
+
+	  var newVal = parseFloat(oldValue) + 1;
+
+   $('.cart-input').val(newVal);
+}
+
+function downClick(b){
+     var $button = $(b);
+  var oldValue = $('.cart-input').val();
+    console.log(oldValue)
+        if (parseFloat(oldValue) > 2){
+           var newVal = parseFloat(oldValue) - 1;
+        }else {
+             var newVal = 1
+        }
+  $('.cart-input').val(newVal);
+}
+
+function add_to_cart(form,i_id) {
+    if (i_id){
+       // console.log(form.elements[i_id+"_items_number"].value);
+    var btn = "#"+i_id+"_submit"
+     // console.log($(btn).data('item_name'));
+     //
+
+        // console.log(form.elements["items_number"].value);
+        //  console.log(form.elements["item_id"].value);
+        // console.log(form.elements["item_name"].value);
+        //  console.log(form.elements["item_price"].value);
+        //  console.log(form.elements["item_image"].value);
+        var item_number = form.elements[i_id+"_items_number"].value
+        var item_id = $(btn).attr('data-item_id')
+        var item_name = $(btn).data('item_name')
+        var item_price = $(btn).data('item_price')
+        var item_image = $(btn).data('item_image')
+
+
+    }
+    else {
+        var item_number = form.elements["items_number"].value
+        var item_id = form.elements["item_id"].value
+        var item_name = form.elements["item_name"].value
+        var item_price = form.elements["item_price"].value
+        var item_image = form.elements["item_image"].value
+    }
+
+
+    var csrf_token = form.elements["csrfmiddlewaretoken"].value
+    // console.log($(form).attr('action'));
+    //  console.log(csrf_token);
+        var data = {};
+        data.item_id = item_id;
+        data.item_number = item_number;
+        data['csrfmiddlewaretoken'] = csrf_token;
+        var url = $(form).attr('action');
+        console.log(data);
+
+        $.ajax({
+            url:url,
+            type:'POST',
+            data: data,
+            cache:true,
+            success: function (data) {
+                console.log('OK');
+                // console.log(data.total_items_in_cart);
+                // console.log(data.all_items);
+
+                $('.cart_table_lg').empty();
+
+                $.each(data.all_items,function (k,v) {
+
+                    // $('.cart_table_lg').append('<tr class="miniCartProduct">\n' +
+                    //     '                                    <td style="width:20%" class="miniCartProductThumb">\n' +
+                    //     '                                        <div><a href="product-details.html"> <img src="'+ v.image +'" alt="img">\n' +
+                    //     '                                        </a></div>\n' +
+                    //     '                                    </td>\n' +
+                    //     '                                    <td style="width:40%">\n' +
+                    //     '                                        <div class="miniCartDescription">\n' +
+                    //     '                                            <h4><a href="product-details.html">'+ v.name +'</a></h4>\n' +
+                    //     '                                            <div class="price"><span> '+ v.price +' &#8381;</span></div>\n' +
+                    //     '                                        </div>\n' +
+                    //     '                                    </td>\n' +
+                    //     '                                    <td style="width:10%" class="miniCartQuantity"><a> X '+ v.number+' </a></td>\n' +
+                    //     '                                    <td style="width:15%" class="miniCartSubtotal"><span> '+ v.total_price +' &#8381;</span></td>\n' +
+                    //     '                                    <td style="width:5%" class="delete"><a data-item_id="'+ v.id +'" onclick="delete_from_cart(this);return false;"> x </a></td>\n' +
+                    //     '                                </tr>');
+
+                    $('.cart_table_lg').append('     \t<tr>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class="product-thumbnail">\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href="page-detail.html">\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img width="80" height="107" alt="" class="img-responsive" src="'+ v.image +'">\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class="product-name">\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href="page-detail.html">'+ v.name +'</a>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br><span class="amount"><strong>'+ v.number+' X '+ v.price +' &#8381; = '+ v.total_price +' &#8381;</strong></span>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class="product-actions">\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a data-item_id="'+ v.id +'" class="remove" onclick="delete_from_cart(this);return false;"> <i class="fa fa-times"></i> </a></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class="fa fa-times"></i>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>');
+
+
+                });
+                $('.cart_total_lg').html(data.total_cart_price);
+                $('.cart_footer_lg').html('');
+                $('.cart_footer_lg').append('' +
+                    ' <h3 class="text-right subtotal"> ИТОГО: '+ data.total_cart_price +' &#8381; </h3>\n' +
+                    '                            <a class="btn  btn-danger" href="/cart"> <i class="fa fa-shopping-cart"> </i> ПРОСМОТР КОРЗИНЫ</a><a\n' +
+                    '                                class="btn  btn-primary"> ОПЛАТА</a>');
+
+
+                $.amaran({
+                        'theme'     :'user blue',
+                        'content'   :{
+                            img: item_image,
+                            user:'Добавлено в корзину:',
+                            message: item_number + ' шт. - ' + item_name
+                        },
+                        'position'  :'bottom right',
+                        'outEffect' :'slideBottom'
+                    });
+            },
+            error: function () {
+                console.log('ERROR')
+            }
+        })
+    }
+
+</script>
 
 {% endblock %}
 

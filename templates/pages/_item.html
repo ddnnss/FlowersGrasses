@@ -1,0 +1,56 @@
+<div class="product-container">
+													<div class="left-block">
+														<div class="product-image-container">
+															<a class="product_img_link" href="{% url 'product' item.name_slug %}" title="{{ item.name }}">
+																<img  alt="Tulipa floriade - red" class="img-responsive" width="480" height="640"
+                                                                           {% for image in item.itemimage_set.all %}
+                                                                                {% if image.is_main %}
+                                                                                   src="{{ image.image_small.url }}"
+                                                                                {% endif %}
+                                                                            {% endfor %} >
+															</a>
+{#															<span class="label-new label">New</span>#}
+{#															<span class="label-sale label">Sale</span>#}
+{#															<span class="label-reduction label">-5%</span>#}
+														</div>
+														<div style="    display: flex;
+                                                                    justify-content: space-between;
+                                                                    width: 88px;
+                                                                    top: 75%;" class="box-buttons">
+																<a class="ajax_add_to_cart_button button btn" href="#" rel="nofollow" title="Add to cart"><i class="zmdi zmdi-shopping-cart"></i></a>
+{#																<a class="button btn quick-view" href="#" title="Quick view">#}
+{#																	<i class="zmdi zmdi-eye"></i>#}
+{#																</a>#}
+																<a class="button btn addToWishlist" href="#" title="Add to my wishlist">
+																	<i class="zmdi zmdi-favorite-outline"></i>
+																</a>
+{#																<a class="button btn add_to_compare" href="#" title="Quick view">#}
+{#																	<i class="zmdi zmdi-refresh-alt"></i>#}
+{#																</a>#}
+														</div>
+													</div><!--end left block -->
+													<div class="right-block">
+														<div class="product-box">
+															<h5 class="name">
+																<a class="product-name" href="page-detail.html" title="Tulipa floriade - red">
+																	{{ item.name }}
+																</a>
+															</h5>
+															<div class="content_price">
+																<span class="price product-price">{{ item.price }} &#8381;</span>
+{#																<span class="old-price product-price">$30.51</span>#}
+															</div>
+{#															<div class="product_comments clearfix">#}
+{#																<div class="product-rating">#}
+{#																	<div class="star_content">#}
+{#																		<div class="star star_on"></div>#}
+{#																		<div class="star star_on"></div>#}
+{#																		<div class="star star_on"></div>#}
+{#																		<div class="star star_on"></div>#}
+{#																		<div class="star star_on"></div>#}
+{#																	</div>#}
+{#																</div>#}
+{#															</div><!-- end product_comments -->#}
+														</div><!-- end product-box -->
+													</div><!--end right block -->
+												</div><!-- end product-container-->

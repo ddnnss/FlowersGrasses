@@ -6,8 +6,7 @@
 					<div class="breadcrumb clearfix">
 						<ul class="ul-breadcrumb">
 							<li><a href="/" title="Home">Главная</a></li>
-                            <li><a href="#" title="Home">Каталог</a></li>
-							<li><span>{{ category.name }}</span></li>
+							<li><span>Результаты поиска</span></li>
 						</ul>
 
 					</div>
@@ -16,14 +15,7 @@
     <div class="section section-tabsproduct">
 					<div class="container">
                             <div class="block-title">
-								<h4 class="title_block">{{ category.name }} {{ cur_filter.name_slug }}</h4>
-								<ul class="filter-items">
-                                    {% for filter in filters %}
-                                         <li><a {% if cur_filter.name_slug == filter.name_slug %} class="filter-active"{% endif %} href="?filter={{ filter.name_slug }}">{{ filter.name }}</a></li>
-                                    {% endfor %}
-{#                                    <li><a class="filter-active" href="#">фильтр 1</a></li>#}
-
-                                </ul>
+								<h4 class="title_block">Результаты поиска по запросу : {{ query }}</h4>
 
 							</div>
 						<div class="block_content">
