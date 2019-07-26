@@ -11,7 +11,7 @@ function add_to_cart(form,i_id) {
         //  console.log(form.elements["item_price"].value);
         //  console.log(form.elements["item_image"].value);
         var item_number = form.elements[i_id+"_items_number"].value
-        var item_id = $(btn).data('item_id')
+        var item_id = $(btn).attr('data-item_id')
         var item_name = $(btn).data('item_name')
         var item_price = $(btn).data('item_price')
         var item_image = $(btn).data('item_image')
@@ -36,6 +36,7 @@ function add_to_cart(form,i_id) {
         data['csrfmiddlewaretoken'] = csrf_token;
         var url = $(form).attr('action');
         console.log(data);
+
         $.ajax({
             url:url,
             type:'POST',
@@ -74,10 +75,10 @@ function add_to_cart(form,i_id) {
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class="product-name">\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href="page-detail.html">'+ v.name +'</a>\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br><span class="amount"><strong>'+ v.price +' &#8381; X '+ v.number+' = '+ v.total_price +' &#8381;</strong></span>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br><span class="amount"><strong>'+ v.number+' X '+ v.price +' &#8381; = '+ v.total_price +' &#8381;</strong></span>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class="product-actions">\n' +
-                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a data-item_id="'+ v.id +'" onclick="delete_from_cart(this);return false;"> x </a></td>\n' +
+                        '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a data-item_id="'+ v.id +'" class="remove" onclick="delete_from_cart(this);return false;"> <i class="fa fa-times"></i> </a></td>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class="fa fa-times"></i>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>\n' +
                         '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +

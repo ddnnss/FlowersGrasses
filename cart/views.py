@@ -71,7 +71,7 @@ def add_to_cart(request):
         item_dict['price'] = item.current_price
         item_dict['total_price'] = item.total_price
         item_dict['number'] = item.number
-        item_dict['image'] = item.item.itemimage_set.first().image_small.url
+        item_dict['image'] = item.item.itemimage_set.first().image.url
         return_dict['all_items'].append(item_dict)
 
     return_dict['total_cart_price'] = total_cart_price
@@ -83,18 +83,8 @@ def delete_from_cart(request):
     data = request.POST
     s_key = request.session.session_key
     item_id = int(data.get('item_id'))
-
-    if request.user.is_authenticated:
-        print('User is_authenticated')
-        Cart.objects.filter(client=request.user, item_id=item_id).delete()
-        all_items_in_cart = Cart.objects.filter(client=request.user)
-
-    else:
-        print('User is_not authenticated')
-
-        guest = Guest.objects.get(session=s_key)
-        Cart.objects.filter(guest=guest, item_id=item_id).delete()
-        all_items_in_cart = Cart.objects.filter(guest=guest)
+    Cart.objects.filter(client=request.user, item_id=item_id).delete()
+    all_items_in_cart = Cart.objects.filter(client=request.user)
     count_items_in_cart = all_items_in_cart.count()
     total_cart_price = 0
 
@@ -109,9 +99,8 @@ def delete_from_cart(request):
         item_dict['price'] = item.current_price
         item_dict['total_price'] = item.total_price
         item_dict['number'] = item.number
-        item_dict['image'] = item.item.itemimage_set.first().image_small
+        item_dict['image'] = item.item.itemimage_set.first().image.url
         return_dict['all_items'].append(item_dict)
-
     return_dict['total_cart_price'] = total_cart_price
     return JsonResponse(return_dict)
 
@@ -165,7 +154,7 @@ def update_cart(request):
         item_dict['number'] = item.number
         item_dict['discount'] = item.item.discount
 
-        item_dict['image'] = item.item.itemimage_set.first().image_small
+        item_dict['image'] = item.item.itemimage_set.first().image
         return_dict['all_items'].append(item_dict)
     total_cart_price_with_discount = total_cart_price
     if used_promo:

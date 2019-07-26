@@ -1,0 +1,66 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+<div id="breadcrumb" class="clearfix">
+				<div class="container">
+					<div class="breadcrumb clearfix">
+						<ul class="ul-breadcrumb">
+							<li><a href="/" title="Home">Главная</a></li>
+							<li><span>Контакты</span></li>
+						</ul>
+
+					</div>
+				</div>
+			</div><!-- end breadcrumb -->
+
+    <div id="columns" class="columns-container">
+    <div class="container">
+        <div class="contact-us">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <h2 class="block-title">Contact info</h2>
+                    <div class="block-contact">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut semper metus. Nullam a elit faucibus, tempor ex at, placerat ligula. Maecenas varius ex mi, elementum porttitor mauris gravida sit amet.</p>
+                        <p></p>
+                        <ul>
+                            <li><i class="zmdi zmdi-pin"></i><span>123 canberra Street, New York, USA</span></li>
+                            <li><i class="zmdi zmdi-phone"></i><span>+844 123 456 78 / +844 123 456 79</span></li>
+                            <li><i class="zmdi zmdi-email"></i><a href="/#" title="">tivatheme@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="contact-form clearfix">
+                        <h2 class="block-title">Send us a message</h2>
+                        <form id="cform">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="name" placeholder="Name*" required="">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="email" id="email" placeholder="Email*" required="">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" id="subject" placeholder="Subject*" required="">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <textarea id="message" placeholder="Enter your message*" required=""></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <button type="submit" class="btn button btn-primary">Send message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="contact-map" class="clearfix">
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.1724238398074!2d-118.24897607353269!3d34.06267085404055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c656a644b049%3A0xcf54a41e79d62b16!2s815+Sunset+Blvd%2C+Los+Angeles%2C+CA+90012%2C+USA!5e0!3m2!1sen!2s!4v1563166978191!5m2!1sen!2s" width="100%" height="600" frameborder="0" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% endblock %}

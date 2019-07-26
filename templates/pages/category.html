@@ -16,7 +16,7 @@
     <div class="section section-tabsproduct">
 					<div class="container">
                             <div class="block-title">
-								<h4 class="title_block">{{ category.name }} {{ cur_filter.name_slug }}</h4>
+								<h4 class="title_block">{{ category.name }}</h4>
 								<ul class="filter-items">
                                     {% for filter in filters %}
                                          <li><a {% if cur_filter.name_slug == filter.name_slug %} class="filter-active"{% endif %} href="?filter={{ filter.name_slug }}">{{ filter.name }}</a></li>

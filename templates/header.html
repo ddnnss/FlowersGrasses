@@ -92,8 +92,8 @@
 												<li class="dropdown"><a href='/'>ГЛАВНАЯ </a></li>
 												<li class="dropdown"><a href='#'>КАТАЛОГ </a></li>
 												<li class="dropdown"><a href='#'>БЛОГ </a></li>
-												<li class="dropdown"><a href='#'>КОНТАКТЫ </a></li>
-												<li class="dropdown"><a href='#'>О НАС</a></li>
+												<li class="dropdown"><a href='{% url 'contacts' %}'>КОНТАКТЫ </a></li>
+												<li class="dropdown"><a href='{% url 'about' %}'>О НАС</a></li>
                                                {% if not request.user.is_authenticated %}
                                                 <li class="dropdown"><a href='{% url 'login' %}'><i style="font-size: 19px" class="fa fa-user "></i></a></li>
                                                 {% else %}

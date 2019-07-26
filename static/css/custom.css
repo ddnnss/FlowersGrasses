@@ -84,6 +84,7 @@
 .filter-items li a{
   text-decoration: none;
   color: #949494;
+  font-size: 14px;
 }
 
 .filter-items li a:hover{
@@ -97,4 +98,8 @@
   color: #B26E6B !important;
 
   border-bottom: 2px solid #B26E6B;
+}
+
+.our_price_display{
+  color: #3c3c3c !important;
 }

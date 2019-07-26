@@ -13,3 +13,9 @@ def login(request):
 def registration(request):
     return render(request, 'pages/registration.html', locals())
 
+def about(request):
+    return render(request, 'pages/about.html', locals())
+
+def contacts(request):
+    return render(request, 'pages/contacts.html', locals())
+
